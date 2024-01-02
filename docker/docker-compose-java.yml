@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  test-service:
+    container_name: test
+    restart: always
+    image: khipu/openjdk17-alpine:latest
+    volumes:
+      - /data/moran/test.jar:/test.jar
+      - ./logs:/data/moran/logs
+      - /etc/localtime:/etc/localtime
+    ports:
+      - "8080:8080"
+    environment:
+      - TZ="Asia/Shanghai"
+    entrypoint: java -server -jar -Duser.timezone=Asia/Shanghai -Dserver.port=8080 -Dspring.profiles.active=prod /test.jar
+    network_mode: "host"
+
+# -server jvm 参数说明
+# -Xms：堆初始大小（默认为物理内存的1/64） -Xms256m
+# -Xmx：堆最大值（默认为物理内存的1/4或者1G） -Xmx2g
+# -Xss：线程栈的大小（一般默认为512k）
+# -Xmn：年轻代的初始值及最大值（可用 -XX:NewSize 和 -XX:MaxNewSiz 来分别设置）
+# -Dserver.port: jar包启动时所使用的端口
+# -Dspring.profiles.active 所选用的配置文件
+# -Duser.timezone 强制指定项目时区
+# 关于映射, ":"  左侧是部署服务器, 右侧是容器内部
+

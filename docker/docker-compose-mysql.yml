@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  mysql:
+    restart: always
+    image: mysql:latest
+    # 选择镜像，这里用的是mysql8，低版本mysql需要修改配置文件映射地址
+    container_name: mysql8
+    volumes:
+    - ./mydir:/mydir
+    # 文件挂载
+    - ./datadir:/var/lib/mysql
+    # 挂载目录
+    - ./conf/my.cnf:/etc/mysql/my.cnf
+    # 挂载 my.cnf 配置文件
+    - ./docker/mysql/source:/docker-entrypoint-initdb.d
+    environment:
+    - "MYSQL_ROOT_PASSWORD=xiyang"
+    # 设置密码
+    - "MYSQL_DATABASE=test"
+    # 设置默认数据库
+    - "TZ=Asia/Shanghai"
+    # 设置时区
+    ports:
+    - 13306:3306
+    # 设置端口

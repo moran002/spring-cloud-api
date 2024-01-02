@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      username: nacos
+      password: xiyang
+      # 配置的动态变更
+      config:
+        group: DEFAULT_GROUP
+        namespace: dev
+        file-extension: yml
+        shared-configs:
+          - data-id: common.yml
+            group: DEFAULT_GROUP
+            refresh: false
+          - data-id: common-jdbc.yml
+            group: DEFAULT_GROUP
+            refresh: true

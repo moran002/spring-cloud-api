@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    nacos:
+      server-addr: xx.xxx.xxx.xx
+      username: username
+      password: password
+      # 配置的动态变更
+      config:
+        group: DEFAULT_GROUP
+        namespace: prod
+        file-extension: yml

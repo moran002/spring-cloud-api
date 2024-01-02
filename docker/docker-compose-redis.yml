@@ -1,0 +1,14 @@
+## reids-docker-compose 文件
+version: '3'
+services:
+  redis:
+    image: redis
+    container_name: redis
+    volumes:
+      - ./datadir:/data
+      - ./conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./logs:/logs
+    command: redis-server --port 6379 --requirepass heihei  --appendonly yes
+
+    ports:
+      - 6379:6379
