@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author : moran
  * @date : 2023/7/12 15:06
  */
-@FeignClient(name = "mango-admin")
+@FeignClient(name = "admin")
 public interface MangoAdminServiceClient {
 
     /**

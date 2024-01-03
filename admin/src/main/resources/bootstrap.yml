@@ -2,6 +2,6 @@ spring:
   profiles:
     active: dev
   application:
-    name: mango-admin
+    name: admin
 server:
   port: 9002

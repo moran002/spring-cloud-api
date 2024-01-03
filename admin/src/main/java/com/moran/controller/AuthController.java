@@ -2,6 +2,7 @@ package com.moran.controller;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
+import com.common.core.controller.Controller;
 import com.common.core.model.UserInfo;
 import com.moran.model.SysUser;
 import com.moran.service.SysUserService;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/auth")
 @AllArgsConstructor
-public class AuthController {
+public class AuthController extends Controller {
     private final SysUserService sysUserService;
 
     /**
